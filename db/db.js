@@ -26,15 +26,15 @@
 //     )
 // }
 
-// findAllRoles() {
-//     connection.query(
-//         "SELECT * FROM role", (err, res) => {
-//             if (err) throw err;
-//             console.table(res);
-//             mainOptions();
-//         }
-//     )
-// }
+// // findAllRoles() {
+// //     connection.query(
+// //         "SELECT * FROM role", (err, res) => {
+// //             if (err) throw err;
+// //             console.table(res);
+// //             mainOptions();
+// //         }
+// //     )
+// // }
 
-// };
-// module.exports = new DB(connection)
+// // };
+// // module.exports = new DB(connection)
