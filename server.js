@@ -2,7 +2,8 @@ const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
 
-function mainOptions() {
+
+const mainOptions = () => {
   inquirer.prompt([
     {
       type: "list",
@@ -14,7 +15,7 @@ function mainOptions() {
         "View All Employees by Manager", //delete 
         "View all Employees by Role",
         "Add Employee",
-        "Add Dempatment",
+        "Add Department",
         "Add Role",
         "Remove Employee", //delete
         "Update Employee Role",
@@ -22,6 +23,33 @@ function mainOptions() {
       ],
     },
   ])
+  .then((res) =>{
+      console.log("test")
+      switch(res.mainOptions) {
+          case "View All Employees":
+              findAllEmployees();
+              break;
+        case "View all Employees by Department":
+            findAllDepartment();
+            break;
+        case "View all Employees by Role":
+            findAllRole();
+            break;
+        case "Add Employee":
+            addEmployee();
+            break;
+        case "Add Department":
+            addDepartment();
+            break;
+        case "Add Role":
+            addRole();
+            break;
+        case "Update Employee Role":
+            updateRole();
+            break;
+            case:
+      }
+  })
 };
 mainOptions()
 
@@ -57,8 +85,8 @@ function addEmployee() {
       name: "manager",
       message: "Who is the employee's manager?",
     },
-  ]);
-}
+  ])
+};
 
 function addRole() {
   return inquirer.prompt([
@@ -77,15 +105,25 @@ function addRole() {
       name: "roleID",
       message: "What is the ID for the role?",
     },
-  ]);
-}
+  ])
+};
 
 function addDepartment() {
-  return inquirer.prompt([
-    {
+  return inquirer.prompt({
       type: "input",
       name: "department",
       message: "What is the name of the Department?",
-    },
-  ]);
-}
+})
+.then((res) => {
+    connection.query('INSERT INTO department SET ?', {
+        dept_name: res.addDepartment
+    });
+    console.log("---- Department added ---- ");
+mainOptions();
+})
+};
+
+
+function updateEmployee() {
+    findAllEmployees()
+};

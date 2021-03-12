@@ -1,12 +1,12 @@
   
-USE jobsDB;
+USE employees;
 
-INSERT INTO department (dept_name)
+INSERT INTO department (name)
 VALUES 
 ("Engineering"),
 ("Legal"),
 ("Sales"),
-("Finanace")
+("Finance");
 
 
 INSERT INTO role (title, salary, department_id)
