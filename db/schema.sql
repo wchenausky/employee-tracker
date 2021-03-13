@@ -3,7 +3,7 @@ CREATE DATABASE employees;
 USE employees;
 CREATE TABLE department (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(30),
+    dept_name VARCHAR(30),
 );
 CREATE TABLE role (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,

@@ -19,34 +19,32 @@ connection.connect((err) => {
 });
 
 const mainOptions = () => {
-  inquirer
-    .prompt([
+  inquirer.prompt(
       {
         type: "list",
         name: "options",
         message: "What would you like to do?",
         choices: [
           "View All Employees",
-          "View All Employees By Department",
-          "View all Employees by Role",
+          "View All Employees by Department",
+          "View All Employees by Role",
           "Add Employee",
           "Add Department",
           "Add Role",
           "Update Employee Role",
           "Exit",
-        ],
-      },
-    ])
+        ]
+       })
     .then((res) => {
-      console.log("test");
+      console.log(res.options);
       switch (res.options) {
         case "View All Employees":
           findAllEmployees();
           break;
-        case "View all Employees by Department":
-          findAllDepartments();
+        case "View All Employees by Department":
+          findAllDepartment();
           break;
-        case "View all Employees by Role":
+        case "View All Employees by Role":
           findAllRoles();
           break;
         case "Add Employee":
@@ -76,19 +74,20 @@ function findAllEmployees() {
     if (err) throw err;
     console.table(res);
     mainOptions();
-  });
-}
+  })
+};
 
 function findAllRoles() {
   connection.query("SELECT * FROM role", (err, res) => {
     if (err) throw err;
     console.table(res);
     mainOptions();
-  });
-}
+  })
+};
 
-function findAllDepartments() {
-  connection.query("SELECT * FROM department", (err, res) => {
+function findAllDepartment() {
+  console.log("got here")
+  connection.query("SELECT * FROM department ORDER BY dept_name ASC", (err, res) => {
     if (err) throw err;
     console.table(res);
     mainOptions();
@@ -180,10 +179,10 @@ function addDepartment() {
       });
       console.log("Department Added");
       mainOptions();
-    });
-}
+    })
+};
 
-const updateRole = () => {
+function updateRole() {
   connection.query("SELECT * FROM employee", (err, res) => {
     if (err) throw err;
     console.table(res);
