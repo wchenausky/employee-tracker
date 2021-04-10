@@ -87,7 +87,7 @@ function findAllRoles() {
 
 function findAllDepartment() {
   console.log("got here")
-  connection.query("SELECT * FROM department ORDER BY dept_name ASC", (err, res) => {
+  connection.query("SELECT * FROM department", (err, res) => {
     if (err) throw err;
     console.table(res);
     mainOptions();
